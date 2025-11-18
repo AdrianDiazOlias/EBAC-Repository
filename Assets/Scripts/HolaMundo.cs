@@ -6,6 +6,8 @@ public class HolaMundo : MonoBehaviour
     void Start()
     {
         Debug.Log("Hola Mundo");
+        Debug.LogWarning("Este es un mensaje de advertencia");
+        Debug.LogError("Este es un mensaje de error");
     }
 
     // Update is called once per frame
