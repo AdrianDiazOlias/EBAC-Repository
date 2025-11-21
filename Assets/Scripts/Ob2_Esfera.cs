@@ -1,16 +1,44 @@
+using System.Collections;
 using UnityEngine;
 
 public class Ob2_Esfera : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Material goldMaterial;
+    public Material silverMaterial;
+
+    public float SwapDelay = 1f;
+
+    private bool canSwap = true;
+    private Renderer obMat;
+
+    void Awake()
     {
-        
+        obMat = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (canSwap)
+            StartCoroutine(SwapMat());
+    }
+
+    private IEnumerator SwapMat()
+    {
+        canSwap = false;
+
+        yield return new WaitForSeconds(SwapDelay);
+
+        if (obMat.sharedMaterial == goldMaterial)
+        {
+            obMat.sharedMaterial = silverMaterial;
+            Debug.Log("Cambiado a plata");
+        }
+        else
+        {
+            obMat.sharedMaterial = goldMaterial;
+            Debug.Log("Cambiado a oro");
+        }
+
+        canSwap = true;
     }
 }
