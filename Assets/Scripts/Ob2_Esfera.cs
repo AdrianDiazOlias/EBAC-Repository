@@ -41,4 +41,16 @@ public class Ob2_Esfera : MonoBehaviour
 
         canSwap = true;
     }
+
+    void OnEnable()
+    {
+        string GoName = gameObject.name;
+        Debug.LogWarning($"El script {GoName} ha sido habilitado.");
+    }
+
+    void OnDisable()
+    {
+        string GoName = gameObject.name;
+        Debug.LogWarning($"El script {GoName} ha sido deshabilitado.");
+    }
 }

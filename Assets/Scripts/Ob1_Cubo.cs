@@ -71,12 +71,12 @@ public class Ob1_Cubo : MonoBehaviour
     void OnEnable()
     {
         string GoName = gameObject.name;
-        Debug.Log($"El script {GoName} ha sido habilitado.");
+        Debug.LogWarning($"El script {GoName} ha sido habilitado.");
     }
 
     void OnDisable()
     {
         string GoName = gameObject.name;
-        Debug.Log($"El script {GoName} ha sido deshabilitado.");
+        Debug.LogWarning($"El script {GoName} ha sido deshabilitado.");
     }
 }
