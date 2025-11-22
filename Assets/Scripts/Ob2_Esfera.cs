@@ -3,43 +3,26 @@ using UnityEngine;
 
 public class Ob2_Esfera : MonoBehaviour
 {
-    public Material goldMaterial;
-    public Material silverMaterial;
-
+    GameObject esfera;
     public float SwapDelay = 1f;
 
     private bool canSwap = true;
-    private Renderer obMat;
 
     void Awake()
     {
-        obMat = GetComponent<Renderer>();
+        esfera = gameObject;
     }
 
     void Update()
     {
-        if (canSwap)
-            StartCoroutine(SwapMat());
-    }
-
-    private IEnumerator SwapMat()
-    {
-        canSwap = false;
-
-        yield return new WaitForSeconds(SwapDelay);
-
-        if (obMat.sharedMaterial == goldMaterial)
-        {
-            obMat.sharedMaterial = silverMaterial;
-            Debug.Log("Cambiado a plata");
-        }
-        else
-        {
-            obMat.sharedMaterial = goldMaterial;
-            Debug.Log("Cambiado a oro");
-        }
-
-        canSwap = true;
+        Color NuevoColor = new Color
+        (
+            UnityEngine.Random.Range(0f, 1f),
+            UnityEngine.Random.Range(0f, 1f),
+            UnityEngine.Random.Range(0f, 1f)
+        );
+        esfera.GetComponent<Renderer>().material.color = NuevoColor;
+        Debug.Log($"Color cambiado de {esfera.name}");
     }
 
     void OnEnable()

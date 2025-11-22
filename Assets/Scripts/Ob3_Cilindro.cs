@@ -1,40 +1,26 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ob3_Cilindro : MonoBehaviour
 {
-    public float vCrecimiento;
-
-    private Transform trans;
-    private float maxHeight = 2f;
-    private float minHeight = 0.25f;
-    private bool isGrowing = true;
+    GameObject cilindro;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        trans = GetComponent<Transform>();
+        cilindro = gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        // modify a copy of the Vector3 and assign it back to avoid modifying the return value of localScale
-        Vector3 scale = trans.localScale;
-
-        if (isGrowing)
-        {
-            scale.y += 0.01f * vCrecimiento;
-            if (scale.y >= maxHeight)
-                isGrowing = false;
-        }
-        else
-        {
-            scale.y -= 0.01f * vCrecimiento;
-            if (scale.y <= minHeight)
-                isGrowing = true;
-        }
-
-        trans.localScale = scale;
+        Color NuevoColor = new Color
+            (
+                UnityEngine.Random.Range(0f, 1f),
+                UnityEngine.Random.Range(0f, 1f),
+                UnityEngine.Random.Range(0f, 1f)
+            );
+        cilindro.GetComponent<Renderer>().material.color = NuevoColor;
+        Debug.Log($"Color cambiado de {cilindro.name}");
     }
 
     void OnEnable()
