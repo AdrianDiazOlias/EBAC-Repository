@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Ob3_Cilindro : MonoBehaviour
+public class Ob4_Cilindro : MonoBehaviour
 {
     GameObject cilindro;
     public bool isWhite;
@@ -26,7 +26,7 @@ public class Ob3_Cilindro : MonoBehaviour
         // cilindro.GetComponent<Renderer>().material.color = NuevoColor;
         // Debug.Log($"Color cambiado de {cilindro.name}");
 
-        if (cubo.isWhite && esfera.isWhite)
+        if (cubo.isWhite || esfera.isWhite)
         {
             cilindro.GetComponent<Renderer>().material.color = Color.white;
             isWhite = true;
